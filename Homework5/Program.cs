@@ -31,8 +31,7 @@ namespace Homework5
             Random random = new Random();
             for (int i = 0; i < sentence.Length; i++)
             {
-                int j = random.Next(sentence.Length - 1);
-                sentence[i] = sentence[j];
+                Array.Reverse(sentence);
             }
             string[] revSent = sentence;
             return revSent;
@@ -41,8 +40,8 @@ namespace Homework5
         static void Main(string[] args)
         {
             Console.WriteLine("Введите предложение для преобразования: ");
-            string sent = Console.ReadLine();
-            string[] sentence = SplitSentence(sent);
+            string sent = Console.ReadLine(); // Считываем ввод
+            string[] sentence = SplitSentence(sent); // Разбиваем предложение на слова методом SplitSentence()
             Console.WriteLine($"Результат разделения: ");
 
             foreach (string s in sentence) // Перебор элементов массива подстрок для их вывода
@@ -50,7 +49,12 @@ namespace Homework5
                 Console.WriteLine(s);
             }
             
-            Console.WriteLine($"Результат перестановки: " + ReverseWording(sent));
+            Console.WriteLine($"Результат перестановки: ");
+            string[] revSent = ReverseWording(sent); // Присваиваем массиву строк возврат метода ReverseWording()
+            for (int i = 0; i < revSent.Length; i++) // Перебираем элементы массива для вывода
+            {
+                Console.Write(revSent[i] + " ");
+            }
             
         }
     }
